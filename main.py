@@ -158,7 +158,7 @@ class Page(wx.Panel):
                 else:
                     unitState = "OTHER"
 
-            print unitState, subUnitState
+            print (unitState, subUnitState)
             if subUnitState == "FIG" and unitState == "FACING":
                 lineNo = int(self.list_ctrl.GetItemText(i,1))
                 SPT_X = float(self.list_ctrl.GetItemText(i,2))
@@ -224,7 +224,7 @@ class Page(wx.Panel):
         XZ[0]
         for line in XZ:
             Length = line[3]-line[1]
-            print "Z0=%s, X0=%s, X=%s, Z=%s, S_CNR=%s, F_CNR=%s"%(line[1], line[0]/2, line[2]/2, Length, line[4], line[5])
+            print("Z0=%s, X0=%s, X=%s, Z=%s, S_CNR=%s, F_CNR=%s", line[1], line[0]/2, line[2]/2, Length, line[4], line[5])
             
             F_CNR = line[5]
             
@@ -276,7 +276,7 @@ class Page(wx.Panel):
         if FACE_SPT_X > 0:
             pos1 = gp_Ax2(gp_Pnt(gp_XYZ(WORKFACE-float(FACE_SPT_Z),0,0)), gp_Dir(1,0,0))
             face = BRepPrimAPI_MakeCylinder(pos1, float(FACE_SPT_X)/2, float(FACE_SPT_Z)).Shape()
-            print FACE_SPT_X, FACE_SPT_Z
+            print (FACE_SPT_X, FACE_SPT_Z)
             #FACE_FPT_X 
             #FACE_FPT_Z 
 
@@ -310,7 +310,7 @@ class Page(wx.Panel):
         fR.close()
         
         self.PopupMenu(MyPopupMenu(wx.RED))
-        print prgLineAction
+        print(prgLineAction)
         
         if prgLineAction == "deleteUnit":
             fW = open(self.fileName, "wb")
@@ -423,7 +423,7 @@ class Page(wx.Panel):
         else:
             frame = SecondFrame("This value canont be changed")
             frame.Show()
-            print self.list_ctrl.GetItemText(event.m_itemIndex,event.m_col)
+            print(self.list_ctrl.GetItemText(event.m_itemIndex,event.m_col))
             
         #print event.m_itemIndex, event.m_col
         #print self.list_ctrl_info[event.m_itemIndex][event.m_col]
@@ -583,9 +583,9 @@ class Page(wx.Panel):
                 
                 unitAddr
                 
-                print "Addr=0x%X, unitTypeId=%d, unitProgNumber=%d, unitName=%s"%(unitAddr,int(unitTypeId),unitProgNumber,unitType[unitTypeId][0])
+                print("Addr=0x%X, unitTypeId=%d, unitProgNumber=%d, unitName=%s", unitAddr,int(unitTypeId),unitProgNumber,unitType[unitTypeId][0])
             else:
-                print "\n%d"%(int(unitTypeId)), "%x"%(unitProgNumber), unitType[unitTypeId][0]
+                print("\n%d"%(int(unitTypeId)), "%x", unitProgNumber, unitType[unitTypeId][0])
                 
         fR.close()
 
@@ -686,7 +686,7 @@ def init_display(screenX=1024, screenY=768):
 
         def viewPoint(self, evt):
             id = evt.GetId()
-            print id
+            print(id)
             
             if id==1:
                 display.View_Iso()
